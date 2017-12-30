@@ -1,0 +1,62 @@
+
+  * {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  html {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Roboto, Arial, sans-serif;
+    font-size: 62.5%;
+    color: #dcdcdc;
+    background-image: url("../img/coral2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #152747;
+    background-attachment: fixed;
+  }
+  body {
+    font-size: 1.8rem;
+  }
+  h1, h2, h3 {
+    font-weight: normal;
+  }
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+  a {
+    color: #d7e0df;
+    text-decoration: none;
+    font-size: 2.5rem;
+  }
+
+  .website-nav {
+    position: relative;
+    padding: 2rem;
+  }
+
+  .website-nav table tr td {
+    float: left;
+    padding: 0.5rem 0rem 0.5rem 3rem;
+    line-height: 83px;
+  }
+
+  .website-nav table tr td a {
+    color: #59afaa;
+    text-decoration: none;
+  }
+
+  .home-link {
+    font-weight: bold;
+  }
+
+  .page-content {
+    padding: 1rem 5rem;
+  }
+
+  .page-content p {
+    margin-bottom: 1rem;
+  }

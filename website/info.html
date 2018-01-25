@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Coral Stress</title>
+  <meta name="description" content=""/>
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+  <body>
+    <header>
+      <nav class="website-nav">
+        <table style="width: 100%">
+          <tr>
+            <td><a class="home-link" href="index.html">Home</a></td>
+            <td><a href="data.html">Data</a></td>
+            <td><a href="info.html">Info</a></td>
+            <td><a href="contact.html">Contact</a></td>
+            <td><img src="img/coralstress_400.png" alt="CoralStress.org" style="position: absolute; right: 50px; vertical-align: middle; width: 200px; height: 83px"></td>
+          </tr>
+        </table>
+      </nav>
+    </header>
+
+    <section class="page-content">
+      <article>
+        
+        <h1>Dataset Information</h1><br><br>
+
+        <p>All files on this website are in NetCDF format. NetCDF files are self-describing (meaning that metadata is self-contained in the file), however we provide some information here regarding dataset usage and important caveats. </p><br>
+
+        <h2><u>Maximum Monthly Mean Climatolgy 1982-2014</u></h2><br>
+        <p>Filename- Maximum_Monthly_Means_Indices_Claar_V1.0 <br><br>
+          Sea Surface Temperature Monthly Means 1982-2014 - SST mean for every month at each location (used to determine MMM).<br>
+          Maximum Monthly Mean (MMM) - the mean temperature of the warmest month of the year <br>
+          MMM Indices - the warmest month (Jan - Dec) at that location, i.e. the month in which the MMM occurs. <br><br>
+
+        <h2><u>SST Climatology (Means, Standard Deviations, Variances) 1982-2014</u></h2><br>
+        <p>Filename- SST_Means_Var_Std_Claar_V1.0<br><br>
+        Sea surface temperature means, standard deviations, and variances for each location.</p> <br><br>
+
+        <h2><u>Degree Heating Week Data (1982-2016)</u></h2><br>
+        <p>Filename- DHW_YEAR_Daily_Claar_V1.0<br><br>
+        Degree Heating Weeks (DHW), a metric used to quantify heat stress on coral reefs.</p> <br><br>
+
+        <h2>Data Source</h2>
+          <p>All datasets were originally derived from Daily AVHRR-only GHRSST Optimally Interpolated Level-4 Sea Surface Temperature data: AVHRR-only L4 blended Global OI NCDC-L4LRblend-GLOB-AVHRR_OI</p> <br><br>
+
+        <h2>Caveats</h2>
+        <ul>
+          <li>While this is a global dataset, it is intended for use in tropical and subtropical regions where coral reefs grow. DHW is probably not a useful metric for temperate and/or polar regions, and we recommend against using this product for these regions.</li>
+        </ul>
+      </article>
+    </section>
+
+</body>
+</html>

@@ -1,2 +1,2 @@
 library(rsconnect)
-rsconnect::deployApp('coralstress_shinyapp/app.R')
+rsconnect::deployApp('coralstress_shinyapp')

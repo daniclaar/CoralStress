@@ -9,7 +9,7 @@ library(ggmap)
 mapWorld <- borders("world", colour="grey20", fill="grey20")
 
 
-load("NOAA/ct5km_climatology_v3.1_MMM.RData")
+load("../NOAA/ct5km_climatology_v3.1_MMM.RData")
 
 
 
@@ -37,10 +37,10 @@ server <- function(input, output) {
   output$map=renderPlot(ggplot(aes(x=long,y=lat),data=location())+mapWorld+geom_point(color='red'))
 
   
-  latIdx <- which(abs(lat-input$lat_in)==min(abs(lat-input$lat_in)))
-  lonIdx <- which(abs(lon-input$lon_in)==min(abs(lon-input$lon_in)))
+  latIdx <-eventReactive(input$click,{which(abs(lat-input$lat_in)==min(abs(lat-input$lat_in)))})
+  lonIdx <- eventReactive(input$click,{which(abs(lon-input$lon_in)==min(abs(lon-input$lon_in)))})
+  output$mmm_out<- renderText({paste("Maximum Monthly Mean =",round(sst_NOAA_clim_full[lonIdx(),latIdx()],digits=2),"°C")})
   
-  output$mmm_out <- reactiveText(sst_NOAA_clim_full[lonIdx,latIdx])
   
   }
 

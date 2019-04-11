@@ -18,10 +18,10 @@ load("../NOAA/ct5km_climatology_v3.1_MMM.RData")
 
 # Define UI ----
 ui <- fluidPage(
-  titlePanel("title panel"),
+  titlePanel("Coral Stress"),
   
   sidebarLayout(
-    sidebarPanel("sidebar panel",
+    sidebarPanel("Input your location here",
                  #Add in an input location for latitude in decimal degrees
                  numericInput(inputId = 'lat_in',label = 'Latitude, decimal degrees [-90,90] ',value = 0,min=-90,max=90),
                  #Add in an input location for longitude in decimal degrees
@@ -29,12 +29,22 @@ ui <- fluidPage(
                  #Add a run buton so that the plots and output doesn't update until the button is pressed
                  actionButton(inputId = 'click',label = 'Run')
     ),
-    mainPanel("main panel",
+    
+    #Create a tab panel for the different metrics for coral stress 
+    mainPanel(tabsetPanel(
+      tabPanel("Welcome",
+               p('This app was constructed to share the coral heat stress data set from "Global patterns and impacts of El Niño events on coral reefs: a meta-analysis". Our goal is to provide an easy-to-access database of coral stress information. Currently, we provide an interface to extract the maximum monthly mean for any location in the world.'),
+HTML('<hr style="border: 4px solid blue;" />'),
+
+p('Full citation: Claar DC, Szostek L, McDevitt-Irwin JM, Schanze JJ, Baum JK. (2018) Global patterns and impacts of El Niño events on coral reefs: a meta-analysis. PLOS One. DOI:10.1371/journal.pone.0190957')
+),
+      tabPanel("Maxiumum Monthly Mean",
               #Add in a location for the output of the maximum monthly mean
               textOutput('mmm_out'),
               #Add in a location for the output of a map with a dot for the supplied lat and lon
-              plotOutput('map')
+              plotOutput('map'))
               )
+      )
   )
 )
 # Define server logic ----

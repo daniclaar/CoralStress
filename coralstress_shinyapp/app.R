@@ -32,21 +32,25 @@ ui <- fluidPage(
     
     #Create a tab panel for the different metrics for coral stress 
     mainPanel(tabsetPanel(
+      #Create a welcome page with basic information about the app
       tabPanel("Welcome",
                p('This app was constructed to share the coral heat stress data set from "Global patterns and impacts of El Niño events on coral reefs: a meta-analysis". Our goal is to provide an easy-to-access database of coral stress information. Currently, we provide an interface to extract the maximum monthly mean for any location in the world.'),
 HTML('<hr style="border: 4px solid blue;" />'),
 
 p('Full citation: Claar DC, Szostek L, McDevitt-Irwin JM, Schanze JJ, Baum JK. (2018) Global patterns and impacts of El Niño events on coral reefs: a meta-analysis. PLOS One. DOI:10.1371/journal.pone.0190957')
-),
+),#End welcome panel
+
+#Create a page with the mmm extraction
       tabPanel("Maxiumum Monthly Mean",
               #Add in a location for the output of the maximum monthly mean
               textOutput('mmm_out'),
               #Add in a location for the output of a map with a dot for the supplied lat and lon
-              plotOutput('map'))
-              )
-      )
-  )
-)
+              plotOutput('map')
+              )#End MMM panel
+              )#End tabset panel
+      )#end main panel
+  )#End Sidebar panel
+)#End UI
 # Define server logic ----
 server <- function(input, output) {
   #When the button in the UI is pressed, record the supplied lat and lon from the UI
@@ -60,7 +64,9 @@ server <- function(input, output) {
   lonIdx <- eventReactive(input$click,{which(abs(lon-input$lon_in)==min(abs(lon-input$lon_in)))})
  
   #Create a line of text that supplies the mmm to two digits past the decimal 
-  output$mmm_out=renderText({paste("Maximum Monthly Mean =",round(sst_NOAA_clim_full[lonIdx(),latIdx()],digits=2),"°C")})
+  mmm=reactive(ifelse(location()$lat<90 & location()$lat>-90 & location()$lon>-180 & location()$lon<180,paste("Maximum Monthly Mean =",round(sst_NOAA_clim_full[lonIdx(),latIdx()],digits=2),"°C"),paste("ERROR: Latitude or Longitude is out of this world")
+                                 ))
+  output$mmm_out=renderText({mmm()})
 }
   
   
